@@ -1,0 +1,129 @@
+<div class="suite-builder__container"
+     data-component="suite-builder"
+     data-bind="scope: 'suite_builder'">
+
+  <div class="suite-builder">
+    <!--<div class="suite-builder__message">-->
+    <!--DRAG&DROP YOUR GOODS HERE-->
+    <!--</div>-->
+    <div class="suite-builder__mini" data-bind="css: {hidden: !isHidden()}, click: toggle">
+      <span class="trigger"></span>
+    </div>
+
+    <div class="suite-builder__wrapper" data-bind="css: {hidden: isHidden()}">
+      <div class="suite-builder__action">
+        <a class="action--hide" href="#" data-bind="click: toggle">Hide</a>
+        <a class="action--remove-all" href="#"
+           data-bind="click: removeAllProductFromBasket">Remove all</a>
+      </div>
+      <div class="suite-builder__suite"
+           data-bind="foreach: { data: slots, as: 'slot' }">
+
+        <div class="suite-builder__slot"
+             data-bind="css: 'suite-builder__slot--' + slot.name">
+
+          <!-- ko if: slot.count() === 0 -->
+          <span class="slot__label" data-bind="text: slot.getName()"></span>
+          <!-- /ko -->
+
+          <!-- ko ifnot: slot.count() === 0 -->
+          <div class="suite-builder__product"
+               data-bind="with: getCurrentProduct, css: { 'nav--show': slot.count() > 1 }">
+            <div class="nav nav--prev"
+                 data-bind="click: slot.prevProduct"></div>
+            <div class="nav nav--next"
+                 data-bind="click: slot.nextProduct"></div>
+
+            <div>
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                   data-bind="attr: { src: data.product_image.src }, css: {'product--dummy' : isDummy}">
+            </div>
+
+            <div class="suite-builder__zoom"
+                 data-bind="click: $parent.handleImageClick , attr: { 'data-tooltip': getCategoryName() }"></div>
+          </div>
+          <!-- /ko -->
+        </div>
+      </div>
+
+      <div class="suite-builder__checkout">
+        <button class="action primary" data-bind="click: handleCheckoutClick">
+          <span class="subtotal__label">Checkout</span>
+        <span class="subtotal__price"
+              data-bind="html: basket().subtotal || 0"></span>
+        </button>
+      </div>
+      <div class="suite-builder__mask"
+           data-bind="blockLoader: isPending()"></div>
+
+      <div class="product__modal"
+           data-bind="with: state, style: {display: state() ? 'block' : 'none' }">
+        <div class="minicart-items"
+             data-bind="with: data, css: { 'nav--show': slot.count() > 1 }">
+          <div class="product product-item">
+            <div class="product">
+              <a tabindex="-1" class="product-item-photo"
+                 data-bind="attr: { href: product_url, title: product_name }">
+          <span class="product-image-container">
+              <span class="product-image-wrapper">
+                    <img class="product-image-photo"
+                         data-bind="attr: { src: product_image.src, alt: product_name }">
+                </span>
+            </span>
+              </a>
+              <div class="product-item-details">
+                <strong class="product-item-name">
+                  <a data-bind="attr: { href: product_url, title: product_name }, text: product_name"></a>
+                </strong>
+                <div class="product-item-pricing">
+                  <div class="price-container">
+                <span class="price-wrapper"
+                      data-bind="html: product_price"></span>
+                  </div>
+                  <div class="details-qty qty">
+                    <label class="label">Qty</label>
+                    <div class="number">
+                      <input type="number" size="4"
+                             class="item-qty cart-item-qty" maxlength="12"
+                             readonly
+                             data-bind="value: qty">
+              <span class="minus"
+                    data-bind="click: $parent.decrement">–</span>
+              <span class="plus"
+                    data-bind="click: $parent.increment">+</span>
+                    </div>
+                    <a href="#" class="action delete" title="Remove item"
+                       data-bind="click: $parent.delete">
+                      <span>Remove</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="action__close" type="button"
+                  data-bind="click: $parent.clearState"></button>
+
+          <div class="nav nav--prev" data-bind="click: $parent.prev"></div>
+          <div class="nav nav--next" data-bind="click: $parent.next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/x-magento-init">
+  {
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "suite_builder": {
+                    "component": "Litslink_CatalogMod/js/suite_builder/suite_builder"
+                }
+            }
+        }
+    }
+  }
+
+
+</script>

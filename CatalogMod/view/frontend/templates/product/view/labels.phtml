@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @author      Litslink
+ * @category    Litslink
+ * @package     Litslink_CatalogMod
+ * @copyright   Copyright (c) 2016
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php /** @var $block \Litslink\CatalogMod\Block\Product\View\Labels */ ?>
+
+
+<?php //echo $block->getLabelCssClasses() ?>
+
+<script type="text/javascript">
+  require.config({
+          deps: [
+              'jquery',
+          ],
+          callback: function ($) {
+            $('.product.media').addClass('<?php echo $block->getLabelCssClasses() ?>');
+          }
+        });
+</script>
+

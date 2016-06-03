@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Litslink
+ * @category    Litslink
+ * @package     Litslink_Liqpay
+ * @copyright   Copyright (c) 2016
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="litslink" translate="label" sortOrder="110">
+            <label>Litslink</label>
+        </tab>
+        <section id="liqpay" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Liqppay</label>
+            <tab>litslink</tab>
+            <resource>Litslink_Liqpay::config_liqpay</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Liqpay Information</label>
+                <field id="version" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Litslink\Liqpay\Block\Adminhtml\System\Config\Form\Info</frontend_model>
+                </field>
+            </group>
+            <group id="api_details" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Liqpay API</label>
+                <field id="api_publickey" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Public Key</label>
+                </field>
+                <field id="api_privatekey" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Private Key</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

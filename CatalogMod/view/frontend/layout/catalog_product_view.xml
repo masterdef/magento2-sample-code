@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Litslink
+ * @category    Litslink
+ * @package     Litslink_CatalogMod
+ * @copyright   Copyright (c)2016
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_product_view"/>
+    <body>
+        <move element="product.info.price" destination="product.info.main" after="-" />
+
+        <referenceContainer name="content">
+            <referenceBlock name="product.info.details">
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.authentic_desc" template="product/view/attribute.phtml" group="detailed_info" after="product.info.description">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getAuthenticDesc</argument>
+                        <argument name="at_code" xsi:type="string">authentic_desc</argument>
+                        <argument name="css_class" xsi:type="string">authentic_desc</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Authentic</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+
+            <referenceBlock name="product.info.details">
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.how_its_made" template="product/view/attribute.phtml" group="detailed_info" after="product.info.authentic_desc">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getHowItsMade</argument>
+                        <argument name="at_code" xsi:type="string">how_its_made</argument>
+                        <argument name="css_class" xsi:type="string">how_its_made</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">How Its Made</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+        
+
+            <referenceBlock name="product.info.details">
+                <block class="Litslink\CatalogMod\Block\Product\View\Labels" name="product.info.description.labels" template="product/view/labels.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_labels" xsi:type="string">is_new,is_bestseller</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+          <block class="Litslink\CatalogMod\Block\Product\View\Slider" name="product.info.description.slider" template="product/view/slider.phtml" group="detailed_info">
+              <arguments>
+                  <argument name="at_gallery" xsi:type="string">description_gallery_1</argument>
+                  <argument name="after_block" xsi:type="string">#product\\.info\\.description .product.attibute.description</argument>
+              </arguments>
+          </block>
+          <block class="Litslink\CatalogMod\Block\Product\View\Slider" name="product.info.description.slider2" template="product/view/slider.phtml" group="detailed_info">
+              <arguments>
+                  <argument name="at_gallery" xsi:type="string">description_gallery_2</argument>
+                  <argument name="after_block" xsi:type="string">#product\\.info\\.authentic_desc .product.attibute.authentic_desc</argument>
+              </arguments>
+          </block>
+          <block class="Litslink\CatalogMod\Block\Product\View\Slider" name="product.info.description.slider3" template="product/view/slider.phtml" group="detailed_info">
+              <arguments>
+                  <argument name="at_gallery" xsi:type="string">description_gallery_3</argument>
+                  <argument name="after_block" xsi:type="string">#product\\.info\\.how_its_made .product.attibute.how_its_made</argument>
+              </arguments>
+          </block>
+
+          <block class="Litslink\CatalogMod\Block\Product\ProductsList" as="product_related_list" template="Litslink_CatalogMod::product/view/related.phtml" cacheable="false">
+            <arguments>
+              <argument name="title" xsi:type="string">RELATED PRODUCTS</argument>
+              <argument name="products_count" xsi:type="string">50000</argument>
+            </arguments>
+          </block><!--//block-->
+        </referenceContainer>
+    </body>
+</page>

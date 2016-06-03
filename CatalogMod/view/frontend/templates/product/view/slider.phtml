@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @author      Litslink
+ * @category    Litslink
+ * @package     Litslink_CatalogMod
+ * @copyright   Copyright (c) 2016
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php /** @var $block \Litslink\CatalogMod\Block\Product\View\Slider */ ?>
+
+
+<?php $slides_count = count($block->getGalleryImages($block->getAtGallery())); ?>
+<?php //var_dump(1149219, $slides_count);exit; ?>
+<?php if ($slides_count): ?>
+<div class="x-slider-com" id="<?php echo $block->getAtGallery() ?>">
+  <ul class="bxslider tpl-prod-view-slider">
+    <?php foreach ($block->getGalleryImages($block->getAtGallery()) as $image): ?>
+      <li><img src="<?php echo $image->getData('large_image_url') ?>"/></li>
+    <?php endforeach; ?>
+  </ul>
+
+    <?php $q = 0; ?>
+
+    <div class="pagerCustom">
+    <?php foreach ($block->getGalleryImages($block->getAtGallery()) as $image): ?>
+        <a class="thumbnail" data-slide-index="<?php echo $q ?>" href=""><img src="<?php echo $image->getData('small_image_url') ?>" /></a>
+      <?php $q++; ?>
+    <?php endforeach; ?>
+    </div>
+</div><!--//x-slider-com-->
+<?php endif; ?>
+
+
+
+<script type="text/javascript">
+  require.config({
+          deps: [
+              'jquery',
+          ],
+          callback: function ($) {
+            $('<?php echo $block->getAfterBlock() ?>').append($('#<?php echo $block->getAtGallery() ?>'));
+          }
+        });
+</script>
+

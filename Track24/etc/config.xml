@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Litslink
+ * @category    Litslink
+ * @package     Litslink_Track24
+ * @copyright   Copyright (c) 2016
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <shippingtrack>
+            <track24>
+                <active>1</active>
+                <model>Litslink\Track24\Model\Track24</model>
+                <title>Track24</title>
+                <allowspecific>0</allowspecific>
+                <group>track24</group>
+            </track24>
+        </shippingtrack>
+    </default>
+</config>

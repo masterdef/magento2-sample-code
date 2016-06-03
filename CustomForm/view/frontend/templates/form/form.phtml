@@ -1,0 +1,136 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+
+
+
+<div class="contact_page">
+  <h1>Contacts information</h1>
+
+  <div class="contact_page_form_block">
+    <h3>Contact form</h3>
+     <div class="type_form_block">
+      <form 
+        class="form contact2"
+        action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+        id="contact-form"
+        method="post"
+        data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+        data-mage-init='{"validation":{}}'
+        >
+      <fieldset>
+        <div class="input_block required field name required">
+          <label class="label">Your Name:</label>
+          <div class="control "><input type="text" name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text type_input" type="text" data-validate="{required:true}"></div>
+        </div>
+        <div class="input_block required field email required">
+          <label class="label">Email:</label>
+          <div class="control"><input  name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" type="text" class="type_input"></div>
+        </div>
+        <div class="input_block field">
+          <label class="label">Subject:</label>
+          <div class="control"><input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" type="text" class="type_input"></div>
+        </div>        
+        <div class="input_block field comment required">
+          <label class="label">Message:</label>
+          <div class="control"><textarea name="comment" id="comment" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}" style="height:120px;"></textarea></div>      
+          
+        </div>      
+
+        <?php echo $block->getChildHtml('form_additional_info'); ?>
+      
+        
+        <div class="actions-toolbar" style="text-align:left;">
+          <label class="label">&nbsp;</label>
+          <div class="control">
+            <input type="hidden" name="hideit" id="hideit" value="0" />
+            <button class="action save primary lg-btn submit" title="Save" type="submit">
+              <span>send request</span>
+            </button>
+          </div>                    
+        </div>      
+        <br>
+      </fieldset>
+      </form>
+     </div>
+  </div>
+  <div class="mailing_adress_block">
+    <h3>Mailing Address</h3>
+    <div class="mailing_adress_container">
+      <div class="map_adress_block">
+        <img src="/pub/media/theme_customization/images/map.jpg" alt="" style="width:100%;">
+      </div>
+      <div class="adress_content">
+        PO Box 255-B, <br>
+        01001 Kyiv, Ukraine<br>
+        Recipient: <br>
+        Oleksandr Zhovnirovych<br><br>
+        
+        AgeOfCraft<br>
+        Reg. number: <br>
+        20210170000000222<br>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--
+
+<form 
+      class="form contact"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'
+      >
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Write Us') ?></span></legend><br />
+        <div class="field note no-label"><?php /* @escapeNotVerified */ echo __('Jot us a note and we’ll get back to you as quickly as possible.') ?></div>
+        <div class="field name required">
+            <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field telephone">
+            <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+            <div class="control">
+                <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+        <div class="field comment required">
+            <label class="label" for="comment"><span><?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?></span></label>
+            <div class="control">
+                <textarea name="comment" id="comment" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"></textarea>
+            </div>
+        </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+-->

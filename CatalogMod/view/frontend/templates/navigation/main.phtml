@@ -1,0 +1,196 @@
+<?php //$currentUrl = $this->getUrl('', ['_current' => true]); var_dump(305330, $currentUrl);exit; ?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('Toggle Nav') ?></span></span>
+   <div class="categories tpl-navigation-main">
+      <a href="#" class="suitebuilder_link"><span class="top_level suitebuilder_link">drag&amp;drop</span></a>	  
+      <a rel="ctg-items-contacts-page" href="/contact/"><span class="top_level contacts_link">contacts</span></a>	  
+      <!--<a rel="ctg-items-community-page" href="/blog/"><span class="top_level community_link">#community</span></a>-->
+
+
+      <a rel="ctg-items-custom-made-page" href="/custom-made/"><span class="top_level custom_made_link">Custom Made</span></a>	  
+      <a rel="ctg-items-sale-page" href="/sale.html"><span class="top_level sale_link">Sale</span></a>
+      <a rel="ctg-items-bestsellers-page" href="/bestsellers.html"><span class="top_level bestsellers_link">Bestsellers</span></a>	  
+      <a rel="ctg-items-0" href="/" class="drop_arr"><span class="top_level">ALL</span></a>
+        <?php foreach ($block->getRootCategories() as $category): ?>
+          <a rel="ctg-items-<?php echo $category->getId() ?>" href="<?php echo $block->getCategoryUrl($category) ?>" class="__drop_arr <?php if ($category->getAllChildNodes()): ?>drop_arr<?php endif; ?>"><span class="top_level"><?php echo $category->getName() ?></span></a>
+
+          <?php /*
+          <div ref="<?php echo get_class($category) ?>" class="categories-items" id="ctg-items-<?php echo $category->getId() ?>" style="display: none;">
+            <?php foreach ($category->getAllChildNodes() as $chld_category): ?>
+              <a href="<?php echo $block->getCategoryUrl($chld_category) ?>">
+                <button class="categories-elements">
+                      <!--
+                      <img src="<?php echo $block->getImageUrl($chld_category) ?>" height="50" alt="">
+                      -->
+                      <span><?php echo $chld_category->getName() ?> (<?php echo $block->getProductCount($chld_category) ?>)</span>
+                    </button></a>
+            <?php endforeach; ?>
+
+            <div class="menu-background"></div>
+          </div><!--//categories-items-->
+          */ ?>
+        <?php endforeach; ?>
+
+
+   </div><!--//categories tpl-navigation-main-->
+
+
+
+   <div class="popup-menu">
+      <div class="categories">
+        <div ref="<?php echo get_class($category) ?>" class="categories-items" id="ctg-items-0" style="display: none;">
+            <div class="categories">
+              <?php foreach ($block->getRootCategories() as $category): ?>
+                <a class="drop-block0" rel="0ctg-items-<?php echo $category->getId() ?>" href="<?php echo $block->getCategoryUrl($category) ?>"><button class="categories-class"><?php echo $category->getName() ?></button></a>
+              <?php endforeach; ?>
+              <a class="drop-block0" rel="ctg-items-custom-made-page" href="/custom-made/"><button class="categories-class">Custom Made</button></a>
+            </div>
+
+            <?php foreach ($block->getRootCategories() as $category): ?>
+                <?php //var_dump(1155224, get_class_methods($category));exit; ?>
+                <div ref="<?php echo get_class($category) ?>" class="0categories-items" id="0ctg-items-<?php echo $category->getId() ?>" style="display: none;">
+                  <?php if ($category->getAllChildNodes()): ?>
+                    <?php foreach ($category->getAllChildNodes() as $chld_category): ?>
+                      <a href="<?php echo $block->getCategoryUrl($chld_category) ?>">
+                        <button class="categories-elements">
+                              <img src="<?php echo $block->getImageUrl($chld_category) ?>" height="50" alt="">
+                              <span><?php echo $chld_category->getName() ?> (<?php echo $block->getProductCount($chld_category) ?>)</span>
+                        </button>
+                      </a>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <?php foreach ($block->getCategoryProductCollection($category) as $product): ?>
+                        <?php $product->load($product->getId()); ?>
+                        <a href="<?php echo $product->getUrl() ?>">
+                          <button class="categories-elements">
+                                <img src="/pub/media/catalog/product<?php echo $product->getSmallImage() ?>" height="50" alt="">
+                                <span><?php echo $product->getName() ?></span>
+                          </button>
+                        </a>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+                <?php /* ?>
+                <div class="0categories-items" id="ctg-items-sale" style="display: none;">
+                  <?php foreach ($category->getProductCollection() as $product): ?>
+                    <a href="<?php echo $product->getUrl() ?>">
+                      <button class="categories-elements">
+                            <img src="<?php echo $product->getImageUrl() ?>" height="50" alt="">
+                            <span><?php echo $product->getName() ?></span>
+                      </button>
+                    </a>
+                  <?php endforeach; ?>
+                </div>
+                <div class="0categories-items" id="ctg-items-custom-made-page" style="display: none;">
+                  CUSTOM MADE 
+                </div>
+                */ ?>
+            <div class="menu-background"></div>
+        </div><!--//categories-items-->
+
+        <?php foreach ($block->getRootCategories() as $category): ?>
+          <div ref="<?php echo get_class($category) ?>" class="categories-items" id="ctg-items-<?php echo $category->getId() ?>" style="display: none;">
+            <?php foreach ($category->getAllChildNodes() as $chld_category): ?>
+              <a href="<?php echo $block->getCategoryUrl($chld_category) ?>">
+                <button class="categories-elements">
+                      <!--
+                      <img src="<?php echo $block->getImageUrl($chld_category) ?>" height="50" alt="">
+                      -->
+                      <span><?php echo $chld_category->getName() ?> (<?php echo $block->getProductCount($chld_category) ?>)</span>
+                    </button></a>
+            <?php endforeach; ?>
+
+            <div class="menu-background"></div>
+          </div><!--//categories-items-->
+        <?php endforeach; ?>
+      </div>
+   </div><!--//popup-menu-->
+
+
+
+
+
+<script type="text/javascript"> 
+  // v352126
+  var cssId = 'myCss';  
+  if (!document.getElementById(cssId))
+  {
+      var head  = document.getElementsByTagName('head')[0];
+
+      var link  = document.createElement('link');
+      link.id   = cssId;
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '/pub/static/frontend/Magento/luma/en_US/css/ageofcraft.css';
+      link.media = 'all';
+      head.appendChild(link);
+
+
+      var link  = document.createElement('link');
+      link.id   = cssId;
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.media = 'all';
+      link.href = '/pub/static/frontend/Magento/luma/en_US/css/ageofcraft_update.css';
+      head.appendChild(link);
+
+      var link  = document.createElement('link');
+      link.id   = cssId;
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.media = 'all';
+      link.href = '<?php echo $block->getViewFileUrl('Litslink_CatalogMod::css/suite_builder.css') ?>';
+      head.appendChild(link);
+  }
+
+
+  require.config({
+          deps: [
+              'jquery',
+              'ageofcraft',
+          ],
+          callback: function ($) {
+              $('html').click(function(){
+                  $('.categories-items').hide();
+              });
+
+              if ($('.message.info.notlogged').length) {
+                //$('.block.review-add').hide();
+              }
+
+              console.log('drop_arr__reg');
+              $('.drop_arr').click(function(event){
+                event.stopPropagation();
+                event.preventDefault();
+                var drop_menu = $('#' + $(this).attr('rel'));
+
+                console.log('drop_arr__click', $(this).attr('rel'));
+                if ($(drop_menu).is(':visible')) {
+                  $('.categories-items').hide();
+                  $('.drop_arr').removeClass('drop');
+                } else {
+                  $('.categories-items').hide();
+                  $(drop_menu).show();
+                  $(this).addClass('drop');
+                }
+              });
+
+              // ALL menu mouse over effect
+              $('.drop-block0').hover(function(event){
+                event.stopPropagation();
+                var drop_menu = $('#' + $(this).attr('rel'));
+                //event.preventDefault();
+                console.log(105318, $(this).attr('rel'), $(drop_menu).is(':visible'));
+
+                if ($(drop_menu).is(':visible')) {
+                  //$('.0categories-items').hide();
+                } else {
+                  $('.0categories-items').hide();
+                  $(drop_menu).show();
+                }
+              });
+          }
+        });
+</script>
+
+

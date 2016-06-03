@@ -1,0 +1,88 @@
+<div class="x-slider-homepage" id="xslider-homepage">
+<script type="text/javascript">// <![CDATA[
+  var xslider_home;
+
+  require.config({
+          deps: [
+              'jquery',
+              'bxslider'
+          ],
+          callback: function ($) {
+              xslider_home = $('.xslider_home').bxSlider({
+                adaptiveHeight: true,
+                mode: 'horizontal',
+                auto: true,
+                pause: 7000  				
+              });
+
+
+            // autoStart slideshow
+            setInterval(function(){
+              $('.xslider_home').each(function(){
+                //console.log('bxslider-load-658', $(this).bxSlider());//.startAuto();
+                xslider_home.startAuto();
+              });
+            }, 10000);
+          }
+        });
+// ]]></script>
+  <ul class="xslider_home">
+          <li class="slide_01">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="armor.html" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>
+          <li class="slide_02">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="weapon.html" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>
+          <li class="slide_03">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="bestsellers.html" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>		
+          <li class="slide_04">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="megasale.html" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>
+          <li class="slide_05">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="custom-made/" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>
+          <li class="slide_06">
+				<div class="slide_block_container">
+					<div class="slide_text">
+						<h3>Age Of Craft</h3>
+						Medieval autentic Hand-Made Armor
+						<a href="art.html" class="slide_button">Discover</a>
+					</div>
+				</div>					
+		  </li>		
+          <li class="video_slide">
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/vAbfDoCdlIo?rel=0" frameborder="0"  webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>				
+		  </li>			  
+      </ul>
+</div><!--//xslider-homepage-->

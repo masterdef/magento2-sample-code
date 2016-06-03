@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>
+            Custom Made
+        </title>
+        <css src="Litslink_CustomForm::css/color-select.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+           <block class="Litslink\CustomForm\Block\ContactForm" name="customContactForm" template="Litslink_CustomForm::form/custom-made.phtml" />
+        </referenceContainer>
+    </body>
+</page>

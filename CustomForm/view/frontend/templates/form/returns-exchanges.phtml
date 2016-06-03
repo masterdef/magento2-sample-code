@@ -1,0 +1,168 @@
+<div class="returns_and_exchanges">
+   <p>To ensure the safety of your funds, buying products manufactured by the company «Age of Craft», we are always ready to be cooperative in case a particular product, for some reason, does not fit you, or is defective.</p>
+   <p>Upon customer request, we are ready to pay a refund or exchange defective item for the one that will meet the conditions previously agreed production start.</p>
+  
+  <h3>To get refund or exchange, one needs to comply with the following conditions:</h3>
+  
+   <ol class="style_ol">
+    <li>If the product does not fit in terms of size, does not meet the conditions specified before production start or if a defect is found, the customer has to file a request in written form (in any convenient way) describing the problem and attach photographs proving the fact of non-fitment or defect within 14 calendar days;</li>
+    <li>In case of a refund or exchange, the product should be returned in the condition it was received (it shouldn’t be used);</li>
+    <li>Give information concerning the company providing the service of product delivery.</li>
+   </ol>
+   
+   <h3>Please complete the form below to request an RMA number.</h3>
+   
+   <div class="type_form_block">
+    <form 
+          action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+          id="contact-form"
+          method="post"
+          data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+          data-mage-init='{"validation":{}}'
+          enctype="multipart/form-data"><fieldset>
+    <fieldset>
+      <h3>Order specification</h3>
+      
+      <div class="input_block required">
+        <label class="label">Your Name:</label>
+        <div class="control"><input type="text" class="type_input" name="fullname" data-validate="{required:true}" aria-required="true"></div>
+      </div>
+      <div class="input_block required">
+        <label class="label">Email:</label>
+        <div class="control"><input type="text" class="type_input" name="email" data-validate="{required:true,email:true}" aria-required="true"></div>
+      </div>
+      <div class="input_block required">
+        <label class="label">Phone:</label>
+        <div class="control"><input type="text" class="type_input" name="phone" data-validate="{required:true}" aria-required="true"></div>
+      </div>
+      <div class="input_block required">
+        <label class="label">Order ID:</label>
+        <div class="control"><input type="text" class="type_input" name="order_id" data-validate="{required:true,number:true}" aria-required="true"></div>
+      </div>
+      <div class="input_block ">
+        <label class="label">Order Date:</label>
+        <div class="control"><input type="text" class="type_input" name="order_date"></div>
+      </div>      
+      <div class="input_block">
+        <label class="label">&nbsp;</label>
+        <div class="control">
+          <input id="return_checkbox" class="checkbox style_checkbox" type="checkbox" title="Return the entire orderate" name="return_checkbox"> <label for="return_checkbox">Return the entire orderate</label>
+        </div>
+      </div>
+      
+      <br>
+      <br>
+      <br>
+      <a id="btn_add_another" href="#" class="add_another">Add another product</a> 
+      <h3>Product information &amp; Reason for Return</h3>
+      <br>
+      <div class="reasons">
+        <div class="reason-of-return">
+            <div class="input_block required">
+              <label class="label">Product Name:</label>
+              <div class="control"><input type="text" class="type_input" name="product[][product_name]" data-validate="{required:true}" aria-required="true"></div>
+            </div>    
+            <div class="input_block required">
+              <label class="label">Product Code:</label>
+              <div class="control"><input type="text" class="type_input" name="product[][product_code]" data-validate="{required:true}" aria-required="true"></div>
+            </div>          
+            <div class="input_block required">
+              <label class="label">Reason for Return:</label>
+              <div class="control">
+                <select name="product[][reason_return]" data-validate="{required:true}" aria-required="true">
+                  <option>Faulty, please supply details</option>
+                  <option>Faulty, please supply details</option>
+                </select>
+              </div>
+            </div>  
+            <div class="input_block ">
+              <label class="label">Product is used:</label>
+              <div class="control">
+                <select name="product[][product_is_used]">
+                  <option>No</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+            </div>  
+            <div class="input_block ">
+              <label class="label">Faulty or other details:</label>
+              <div class="control"><textarea name="product[][faulty_details]"></textarea></div>      
+              
+            </div>  
+        </div><!--//reason-of-return-->
+      </div><!--//reasons-->
+      <div class="input_block required">
+        <label class="label">Enter the code:</label>
+        <div class="control">
+          <input type="text" class="type_input" name="captcha" style="width:130px; float:left;" data-validate="{required:true}" aria-required="true" /> 
+          <span class="captcha_style"><img src="/pub/media/theme_customization/images/captcha.png" alt=""></span>
+        </div>
+      </div>      
+      
+      <div class="actions-toolbar" style="text-align:left;">
+        <label class="label">&nbsp;</label>
+        <div class="control">
+          <button class="action save primary lg-btn" title="Save" type="submit">
+            <span>send request</span>
+          </button>
+        </div>                    
+      </div>      
+      <br>
+    </fieldset>
+    </form>
+   </div>
+</div>
+
+
+
+
+
+
+<!-- Bootstrap styles -->
+<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+<!-- Generic page styles -->
+<!--<link rel="stylesheet" href="/js/jquery-file-upload/css/style.css">-->
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="/js/jquery-file-upload/css/jquery.fileupload.css">
+
+
+<?php /*
+<div class="container">
+    <!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Select files...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload" type="file" name="files[]" multiple="" />
+    </span>
+    <br>
+    <br>
+    <!-- The global progress bar -->
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <!-- The container for the uploaded files -->
+    <div id="files" class="files"></div>
+    <br>
+</div>
+*/ ?>
+
+
+
+<script>
+  require.config({
+          deps: [
+              'jquery',
+          ],
+          callback: function ($) {
+            console.log('btn_add_another__call155');
+            $('#btn_add_another').click(function(e){
+              console.log('btn_add_another__call155');
+              $('.reasons').prepend($('.reason-of-return').first().html());
+              e.preventDefault();
+            });
+          }
+      });
+</script>
+
+

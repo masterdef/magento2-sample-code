@@ -1,0 +1,136 @@
+<div class="custom_made_block">
+<h1>Custom made</h1>
+<h3>Looking for something special?</h3>
+<ol class="style_ol">
+<li>Museum exhibits, sculptures, b&aacute;s-relieves, paintings depicting medieval armor can be sources for production of handmade armor, suitable for participation in medieval battles reenactment.</li>
+<li>Save several images (photos or sketches) of the chosen armor or its parts to your computer.</li>
+<li>Send us a filled form with the images and we will contact you in the shortest possible time.</li>
+</ol>
+<h3>Order specification</h3>
+<div class="type_form_block"><form 
+  action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+  id="contact-form"
+  method="post"
+  data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+  data-mage-init='{"validation":{}}'
+  enctype="multipart/form-data"><fieldset>
+<div class="input_block required"><label class="label">Your Name:</label>
+<div class="control"><input class="type_input" type="text" name="fullname" data-validate="{required:true}" aria-required="true" /></div>
+</div>
+<div class="input_block required"><label class="label">Email:</label>
+<div class="control"><input class="type_input" type="text" name="email" data-validate="{required:true, 'validate-email':true}" aria-required="true" /></div>
+</div>
+<div class="input_block "><label class="label">Phone:</label>
+<div class="control"><input class="type_input" type="text" name="phone" /></div>
+</div>
+<div class="input_block required"><label class="label">Subject:</label>
+<div class="control"><input class="type_input" type="text" name="subject" data-validate="{required:true}" aria-required="true" /></div>
+</div>
+<div class="input_block required"><label class="label">Feature information:</label>
+<div class="control">&nbsp;</div>
+</div>
+<div class="upload_file_list"><label class="label">&nbsp;</label>
+  <div class="control">
+    <!--
+    <span class="upload_file_name">filename.doc <span>&times;</span></span> 
+    <span class="upload_file_name">filename.jpg <span>&times;</span></span>
+    -->
+  </div>
+</div>
+
+<?php echo $block->getChildHtml('form_additional_info'); ?>
+
+<div class="actions-toolbar">
+<div class="primary"><button disabled="disabled" class="send-custommade-form action save primary" title="Save" type="submit"> <span>send</span> </button></div>
+
+<div class="secondary file_upload_button">
+    <span class="fileinput-button">
+        Attach file
+        <input id="filelist" type="hidden" name="filelist" value=""/>
+        <input id="fileupload" type="file" name="files[]" multiple="" />
+    </span>
+</div>
+</div>
+</fieldset></form></div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap styles -->
+<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+<!-- Generic page styles -->
+<!--<link rel="stylesheet" href="/js/jquery-file-upload/css/style.css">-->
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="/js/jquery-file-upload/css/jquery.fileupload.css">
+
+
+<?php /*
+<div class="container">
+    <!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Select files...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload" type="file" name="files[]" multiple="" />
+    </span>
+    <br>
+    <br>
+    <!-- The global progress bar -->
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <!-- The container for the uploaded files -->
+    <div id="files" class="files"></div>
+    <br>
+</div>
+*/ ?>
+
+
+
+<script>
+  require.config({
+          deps: [
+              'jquery',
+              'jupl_uiwidget',
+              'jupl_iframetransp',
+              'jupl_upload',
+              'jupl_bootstrap'
+          ],
+          callback: function ($) {
+              /*jslint unparam: true */
+              /*global window, $ */
+                  'use strict';
+                  // Change this to the location of your server-side upload handler:
+                  var url = '/js/jquery-file-upload/server/php/';
+                  $('#fileupload').fileupload({
+                      url: url,
+                      dataType: 'json',
+                      done: function (e, data) {
+                          $.each(data.result.files, function (index, file) {
+                              //$('<p/>').text(file.name).appendTo('#files');
+                              $('<p/>').text(file.name).appendTo('.upload_file_list .control');
+                              $('#filelist').val($('#filelist').val() + file.url + ' ');
+                              $('.send-custommade-form').removeAttr('disabled');                            
+                              console.log('send_file_progress__action', $('.send-custommade-form'));
+                          });
+                      },
+                      progressall: function (e, data) {
+                          var progress = parseInt(data.loaded / data.total * 100, 10);
+                          $('#progress .progress-bar').css(
+                              'width',
+                              progress + '%'
+                          );
+                      }
+                  }).prop('disabled', !$.support.fileInput)
+                      .parent().addClass($.support.fileInput ? undefined : 'disabled');
+          }
+      });
+</script>
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default" />
+    <body>
+        <move element="page.messages" destination="main" before="-" />
+
+        <referenceContainer name="header.container">
+          <referenceContainer name="header-wrapper">
+                <block class="Litslink\CatalogMod\Block\Navigation" name="main-navigation-panel" template="navigation/main.phtml"></block>
+          </referenceContainer>
+        </referenceContainer>
+
+
+        <referenceContainer name="page.wrapper">
+          <!--
+          <block class="Litslink\CatalogMod\Block\Navigation" name="script.imageslider" as="script.imageslider" template="Magento_Catalog::product/view/image-slider.phtml"/>
+          <block class="Litslink\CatalogMod\Block\Navigation" name="homepage.imageslider" as="homepage.imageslider" template="Litslink_CatalogMod::homepage/mainslider.phtml" before="main.content" />
+          -->
+        </referenceContainer>
+
+        <referenceContainer name="store.menu">
+          <block class="Magento\Framework\View\Element\Template" name="top.search.nav" as="topSearchNav" template="Magento_Search::form.mini.phtml" before="-" />
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Magento\Catalog\Block\Category\Rss\Link" template="Litslink_CatalogMod::product/view/suitebuilder.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
